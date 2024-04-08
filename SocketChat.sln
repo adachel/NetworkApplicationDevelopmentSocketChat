@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{0FC617
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocketChat.Common.Entities", "SocketChat.Common.Entities\SocketChat.Common.Entities.csproj", "{2EC537A7-ECFB-4729-A966-E4BB68B6B7F1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Temp", "ConsoleApp2\Temp.csproj", "{D12B1E80-3FF1-40B7-8CBF-8A6A359B327C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2EC537A7-ECFB-4729-A966-E4BB68B6B7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EC537A7-ECFB-4729-A966-E4BB68B6B7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EC537A7-ECFB-4729-A966-E4BB68B6B7F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D12B1E80-3FF1-40B7-8CBF-8A6A359B327C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D12B1E80-3FF1-40B7-8CBF-8A6A359B327C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D12B1E80-3FF1-40B7-8CBF-8A6A359B327C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D12B1E80-3FF1-40B7-8CBF-8A6A359B327C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

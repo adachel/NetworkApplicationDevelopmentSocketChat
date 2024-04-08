@@ -18,12 +18,14 @@ namespace SocketChat.Controllers
             _userLogic = userLogic;
         }
 
+
         // GET: api/<UserController>
         [HttpGet]
         public async Task<IEnumerable<User>> Get()
         {
             return await Task.Run(() => { return _userLogic.GetAll(); });
         }
+
 
         // POST api/<UserController>
         [HttpPost]
