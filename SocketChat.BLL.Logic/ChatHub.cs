@@ -8,31 +8,19 @@ using System.Threading.Tasks;
 
 namespace SocketChat.BLL.Logic
 {
-    public class ChatHub : Hub // точка, к ней будут подключаться различные клиенты
+    public class ChatHub : Hub 
     {
-        // принимаем подключение, нужно уведомить клиента, что он подключился
-        public override async Task OnConnectedAsync() // когда клиент подключится к сокету, отработает этот метод
+        public override async Task OnConnectedAsync() 
         {
-            await Clients.Caller.SendAsync("It`s okay, you are connected"); // к клиенту отправится сообщение
+            await Clients.Caller.SendAsync("It`s okay, you are connected");
         }
 
 
-        public async Task Send(SignalRMessage message /* message */)
+        public async Task Send(SignalRMessage message)
         {
-            // await Clients.All.SendAsync(message); // опссылаем сообщения всем клиентам, кот подключены
-
-            //await Clients.All.SendAsync($"message: {message.Message}; fromUser: {message.FromUser}"); // опссылаем объект всем клиентам, кот подключены
-
-            await Clients.All.SendAsync($"message: {message.Message}; fromUser: {Context.ConnectionId}"); // опссылаем объект всем клиентам, кот подключены
+            await Clients.All.SendAsync($"message: {message.Message}; fromUser: {Context.ConnectionId}"); 
         }
 
-
-        // если хотим делать отправку какому-то клиенту.
-        // В методе OnConnectedAsync() каждому клиенту присваивается ConnectionId.
-        // Идентификация: можем сделать, так, что, клиент когда подключался, присылал свои данные.
-        // По этом уникальным данным сохраняем в список его ConnectionId и эти данные.
-        // Чтобы какому-то конкретному клиенту отправить сообщение, в списке ищем клиента,
-        // получаем ConnectionId и этом клиенту отправляем сообщение по ConnectionId. 
         public async Task SendToUser(SignalRMessage message)
         {
             var client = Clients.Client(message.ConnectionId);
