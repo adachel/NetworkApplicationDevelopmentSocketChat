@@ -16,10 +16,18 @@ namespace SocketChat.BLL.Logic
         }
 
 
-        public async Task Send(SignalRMessage message)
+        //public async Task Send(SignalRMessage message)
+        //{
+        //    await Clients.All.SendAsync($"message: {message.Message}; fromUser: {Context.ConnectionId}"); 
+        //}
+
+
+        public async Task Send(string username, string message)
         {
-            await Clients.All.SendAsync($"message: {message.Message}; fromUser: {Context.ConnectionId}"); 
+            await this.Clients.All.SendAsync("Receive", username, message);
         }
+
+
 
         public async Task SendToUser(SignalRMessage message)
         {
