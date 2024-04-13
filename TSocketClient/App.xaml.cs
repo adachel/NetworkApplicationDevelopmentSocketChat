@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace SocketClient
+namespace TSocketClient
 {
     /// <summary>
     /// Interaction logic for App.xaml
