@@ -14,56 +14,29 @@ namespace TSocketClient
 {
     public partial class MainWindow : Window
     {
-
-        HubConnection? connection;  // подключение для взаимодействия с хабом
-
+        HubConnection connection;
         public MainWindow()
         {
             InitializeComponent();
-
-            // создаем подключение к хабу
             connection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:7217/chat")
+                .WithUrl("https://localhost:7000/chat")
                 .Build();
 
-
-            // регистрируем функцию Receive для получения данных
-
-            connection.On<string, string>("Receive", (user, message) =>
+            connection.On<SignalRMessage>("Receive", (message) =>
             {
                 Dispatcher.Invoke(() =>
                 {
-                    var newMessage = $"{user}::::::::::::::: {message}";
+                    var newMessage = $"{message.FromUser}: {message.Message}";
                     chatbox.Items.Insert(0, newMessage);
                 });
             });
-
-            //connection.On<SignalRMessage>("Receive", (message) =>
-            //{
-            //    Dispatcher.Invoke(() =>
-            //    {
-            //        //var newMessage = $"{message.FromUser}: {message.Message}";
-
-            //        chatbox.Items.Insert(0, newMessage);
-            //    });
-            //});
-
-
-
         }
 
-
-
-
-
-        // обработчик загрузки окна
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                // подключемся к хабу
                 await connection.StartAsync();
-
                 chatbox.Items.Add("Вы вошли в чат");
                 sendBtn.IsEnabled = true;
             }
@@ -72,20 +45,15 @@ namespace TSocketClient
                 chatbox.Items.Add(ex.Message);
             }
         }
-        // обработчик нажатия на кнопку
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // отправка сообщения
+                SignalRMessage signalRMessage = new SignalRMessage();
+                signalRMessage.FromUser = userTextBox.Text;
+                signalRMessage.Message = messageTextBox.Text;
 
-                //SignalRMessage signalRMessage = new SignalRMessage();
-                //signalRMessage.FromUser = userTextBox.Text;
-                //signalRMessage.Message = messageTextBox.Text;
-
-                await connection.InvokeAsync("Send", userTextBox.Text, messageTextBox.Text);
-                // await connection.InvokeAsync("Send", signalRMessage);
-
+                await connection.InvokeAsync("Send", signalRMessage);
             }
             catch (Exception ex)
             {
