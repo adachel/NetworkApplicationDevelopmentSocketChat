@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace SocketChat.BLL.Logic
 {
-    // [Authorize]
     public class ChatHub : Hub 
     {
         public override async Task OnConnectedAsync()
@@ -20,11 +19,6 @@ namespace SocketChat.BLL.Logic
         {
             await Clients.All.SendAsync("Receive", message);
         }
-
-        //public async Task Send(string username, string message)
-        //{
-        //    await this.Clients.All.SendAsync("Receive", username, message);
-        //}
         public async Task SendToUser(SignalRMessage message)
         {
             var client = Clients.Client(message.ConnectionId);
