@@ -9,32 +9,20 @@ using System.Threading.Tasks;
 
 namespace SocketChat.BLL.Logic
 {
-    // [Authorize]
     public class ChatHub : Hub 
     {
-        //public override async Task OnConnectedAsync()
-        //{
-        //    await Clients.Caller.SendAsync("It`s okay, you are connected");
-        //}
-
-
-        //public async Task Send(SignalRMessage message)
-        //{
-        //    await Clients.All.SendAsync("Receive", $"fromUser: {Context.ConnectionId}", $"message: {message.Message}");
-        //}
-
-
-        public async Task Send(string username, string message)
+        public override async Task OnConnectedAsync()
         {
-            await this.Clients.All.SendAsync("Receive", username, message);
+            await Clients.Caller.SendAsync("It`s okay, you are connected");
         }
-
-
-
-        //public async Task SendToUser(SignalRMessage message)
-        //{
-        //    var client = Clients.Client(message.ConnectionId);
-        //    await client.SendAsync($"message: {message.Message}; fromUser: {message.FromUser}");
-        //}
+        public async Task Send(SignalRMessage message)
+        {
+            await Clients.All.SendAsync("Receive", message);
+        }
+        public async Task SendToUser(SignalRMessage message)
+        {
+            var client = Clients.Client(message.ConnectionId);
+            await client.SendAsync($"message: {message.Message}; fromUser: {message.FromUser}");
+        }
     }
 }
