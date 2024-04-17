@@ -12,7 +12,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSignalR(); 
+
+builder.Services.AddSignalR();
 
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 
@@ -24,7 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapHub<ChatHub>("/chat");
+app.MapHub<ChatHub>("/chat");   
 
 app.UseHttpsRedirection();
 
@@ -33,4 +34,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
 

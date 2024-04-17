@@ -10,14 +10,7 @@ namespace SocketChat.BLL.Logic
 {
     public class UserLogic : IUserLogic
     {
-        public void Add(User user)
-        {
-            UserRepository.AddUser(user);
-        }
-
-        public List<User> GetAll()
-        {
-            return UserRepository.GetAll();
-        }
+        public void Add(User user) => UserRepository.AddUser(user);
+        public List<User> GetAll() => UserRepository.GetAll();
     }
 }

@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 
 namespace SocketChat.BLL.Logic
 {
-    public class ChatHub : Hub 
+    public class ChatHub : Hub
     {
         public override async Task OnConnectedAsync()
         {
             await Clients.Caller.SendAsync("It`s okay, you are connected");
         }
+
         public async Task Send(SignalRMessage message)
         {
-            await Clients.All.SendAsync("Receive", message);
+            await Clients.Others.SendAsync("Receive", message);
         }
+
         public async Task SendToUser(SignalRMessage message)
         {
             var client = Clients.Client(message.ConnectionId);

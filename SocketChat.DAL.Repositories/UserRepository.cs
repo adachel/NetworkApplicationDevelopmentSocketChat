@@ -10,7 +10,6 @@ namespace SocketChat.DAL.Repositories
         {
             return users;
         }
-
         public static void AddUser(User user)
         {
             users.Add(user);
