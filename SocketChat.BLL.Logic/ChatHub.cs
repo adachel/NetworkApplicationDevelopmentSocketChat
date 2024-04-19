@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SocketChat.BLL.Logic
 {
-    public class ChatHub : Hub 
+    public class ChatHub : Hub
     {
         public override async Task OnConnectedAsync()
         {
