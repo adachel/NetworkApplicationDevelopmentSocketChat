@@ -21,17 +21,17 @@ namespace SocketChat.Controllers
 
         // GET: api/<UserController>
         [HttpGet]
-        public async Task<IEnumerable<User>> Get()
+        public async Task<List<User>> Get()
         {
-            return await Task.Run(() => { return _userLogic.GetAll(); });
+            return await  _userLogic.GetAllAsyng();
         }
 
 
         // POST api/<UserController>
         [HttpPost]
-        public async void Post([FromBody] User user)
+        public async Task Post([FromBody] User user)
         {
-            await Task.Run(() => { _userLogic.Add(user); });
+            await _userLogic.AddAsyng(user);
         }
     }
 }

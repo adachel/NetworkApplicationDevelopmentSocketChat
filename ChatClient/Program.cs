@@ -5,13 +5,13 @@ HubConnection connection;
 SignalRMessage signalRMessage = new SignalRMessage();
 
 Console.WriteLine("Задать имя пользователя");
-signalRMessage.FromUser = Console.ReadLine();
+signalRMessage.FromUser.Name = Console.ReadLine();
 
 connection = new HubConnectionBuilder().WithUrl("https://localhost:7000/chat").Build();
 
 connection.On<SignalRMessage>("Receive", 
     signalRMessage => 
-    Console.WriteLine($"Пользователь: {signalRMessage.FromUser}\n" + $"Сообщение: {signalRMessage.Message}"));
+    Console.WriteLine($"Пользователь: {signalRMessage.FromUser.Name}\n" + $"Сообщение: {signalRMessage.Message}"));
 
 await connection.StartAsync();
 

@@ -10,14 +10,21 @@ namespace SocketChat.BLL.Logic
 {
     public class UserLogic : IUserLogic
     {
-        public void Add(User user)
+        private readonly IUserRepository _userRepository;
+
+        public UserLogic(IUserRepository userRepository)
         {
-            UserRepository.AddUser(user);
+            _userRepository = userRepository;
         }
 
-        public List<User> GetAll()
+        public async Task AddAsyng(User user)
         {
-            return UserRepository.GetAll();
+            await _userRepository.AddUserAsyng(user);
+        }
+
+        public async Task<List<User>> GetAllAsyng()
+        {
+            return await _userRepository.GetUsersAsync();
         }
     }
 }

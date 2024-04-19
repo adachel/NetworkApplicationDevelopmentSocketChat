@@ -1,19 +1,26 @@
-﻿using SocketChat.Common.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SocketChat.Common.Entities;
 
 namespace SocketChat.DAL.Repositories
 {
-    public static class UserRepository
+    public class UserRepository : IUserRepository
     {
-        private static List<User> users = new List<User>();
+        private readonly ChatContext _chatContext;
 
-        public static List<User> GetAll()
+        public UserRepository(ChatContext chatContext)
         {
-            return users;
+            _chatContext = chatContext;
         }
 
-        public static void AddUser(User user)
+        public async Task AddUserAsyng(User user)
         {
-            users.Add(user);
+            await _chatContext.Users.AddAsync(user);
+            await _chatContext.SaveChangesAsync();
+        }
+
+        public async Task<List<User>> GetUsersAsync()
+        {
+            return await _chatContext.Users.ToListAsync();
         }
     }
 }

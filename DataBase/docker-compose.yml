@@ -1,0 +1,40 @@
+version: '2.3'
+networks:
+  postgres:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.5.0.0/16
+
+volumes:
+  pgdata:
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "TestDB"
+      POSTGRES_USER: "test"
+      POSTGRES_PASSWORD: "Test1234"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4:5.7
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "test@mail.ru"
+      PGADMIN_DEFAULT_PASSWORD: "Test1234"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - ./private/var/lib/pgadmin:/var/lib/pgadmin
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - postgres
