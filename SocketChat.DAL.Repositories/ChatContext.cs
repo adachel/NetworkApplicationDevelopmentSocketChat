@@ -10,12 +10,13 @@ namespace SocketChat.DAL.Repositories
 {
     public class ChatContext : DbContext
     {
-        
-
         public DbSet<User> Users { get; set; }
+        public DbSet<SignalRMessage> Messages { get; set; }
+
         public ChatContext(DbContextOptions<ChatContext> options) : base(options)
         {
             Database.EnsureCreated();
+            this.ChangeTracker.LazyLoadingEnabled = true; //
         }
 
     }

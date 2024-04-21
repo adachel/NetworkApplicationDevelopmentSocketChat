@@ -23,7 +23,7 @@ namespace SocketChat.Controllers
         [HttpGet]
         public async Task<List<User>> Get()
         {
-            return await  _userLogic.GetAllAsyng();
+            return await  _userLogic.GetAllAsync();
         }
 
 
@@ -31,7 +31,7 @@ namespace SocketChat.Controllers
         [HttpPost]
         public async Task Post([FromBody] User user)
         {
-            await _userLogic.AddAsyng(user);
+            await _userLogic.AddAsync(user);
         }
     }
 }

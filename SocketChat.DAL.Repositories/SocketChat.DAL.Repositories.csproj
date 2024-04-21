@@ -14,4 +14,9 @@
     <ProjectReference Include="..\SocketChat.Common.Entities\SocketChat.Common.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Message\" />
+    <Folder Include="User\" />
+  </ItemGroup>
+
 </Project>

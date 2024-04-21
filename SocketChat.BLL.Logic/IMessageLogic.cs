@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocketChat.DAL.Repositories
+namespace SocketChat.BLL.Logic
 {
-    public interface IUserRepository
+    public interface IMessageLogic
     {
-        Task<List<User>> GetUsersAsync();
-        Task AddUsersAsync(User user);
+        Task<List<SignalRMessage>> GetAllAsyng();
+        Task AddAsyng(SignalRMessage message);
     }
 }

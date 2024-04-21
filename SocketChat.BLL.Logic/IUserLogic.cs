@@ -9,7 +9,7 @@ namespace SocketChat.BLL.Logic
 {
     public interface IUserLogic
     {
-        Task<List<User>> GetAllAsyng();
-        Task AddAsyng(User user);
+        Task<List<User>> GetAllAsync();
+        Task AddAsync(User user);
     }
 }

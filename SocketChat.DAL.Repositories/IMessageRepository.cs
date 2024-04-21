@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SocketChat.DAL.Repositories
 {
-    public interface IUserRepository
+    public interface IMessageRepository
     {
-        Task<List<User>> GetUsersAsync();
-        Task AddUsersAsync(User user);
+        Task<List<SignalRMessage>> GetMessageAsync();
+        Task AddMessageAsyng(SignalRMessage message);
     }
 }
