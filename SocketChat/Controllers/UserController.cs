@@ -28,10 +28,10 @@ namespace SocketChat.Controllers
 
 
         // POST api/<UserController>
-        [HttpPost]
-        public async Task Post([FromBody] User user)
-        {
-            await _userLogic.AddAsync(user);
-        }
+        //[HttpPost]
+        //public async Task Post([FromBody] User user)
+        //{
+        //    await _userLogic.AddAsync(user);
+        //}
     }
 }

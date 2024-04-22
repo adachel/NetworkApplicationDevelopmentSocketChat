@@ -16,11 +16,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSignalR();
 
-builder.Services.AddScoped<IUserLogic, UserLogic>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-//builder.Services.AddScoped<IMessageLogic, MessageLogic>();
-//builder.Services.AddScoped<IMessageRepository, MessageRepository>();
-
+//builder.Services.AddScoped<IUserLogic, UserLogic>();
+//builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ChatContext>(options =>

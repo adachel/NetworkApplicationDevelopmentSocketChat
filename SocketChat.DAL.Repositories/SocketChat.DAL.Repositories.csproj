@@ -7,16 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Message\**" />
+    <Compile Remove="User\**" />
+    <EmbeddedResource Remove="Message\**" />
+    <EmbeddedResource Remove="User\**" />
+    <None Remove="Message\**" />
+    <None Remove="User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SocketChat.Common.Entities\SocketChat.Common.Entities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Message\" />
-    <Folder Include="User\" />
   </ItemGroup>
 
 </Project>
