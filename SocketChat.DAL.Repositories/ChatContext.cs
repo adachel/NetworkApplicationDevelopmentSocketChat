@@ -16,7 +16,7 @@ namespace SocketChat.DAL.Repositories
         public ChatContext(DbContextOptions<ChatContext> options) : base(options)
         {
             Database.EnsureCreated();
-            this.ChangeTracker.LazyLoadingEnabled = true; //
+            //this.ChangeTracker.LazyLoadingEnabled = true; //
         }
 
     }

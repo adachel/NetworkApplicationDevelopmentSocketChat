@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Message\" />
     <Folder Include="User\" />
   </ItemGroup>
 

@@ -12,7 +12,7 @@ namespace SocketChat.DAL.Repositories
             _chatContext = chatContext;
         }
 
-        public async Task AddUsersAsync(User user)
+        public async Task AddUserAsync(User user)
         {
             await _chatContext.Users.AddAsync(user);
             await _chatContext.SaveChangesAsync();

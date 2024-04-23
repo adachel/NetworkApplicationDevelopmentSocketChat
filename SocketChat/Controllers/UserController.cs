@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SocketChat.BLL.Logic;
+//using SocketChat.BLL.Logic.Message;
 using SocketChat.Common.Entities;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SocketChat.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -15,7 +16,7 @@ namespace SocketChat.Controllers
 
         public UserController(IUserLogic userLogic)
         {
-            _userLogic = userLogic;
+            _userLogic = userLogic; 
         }
 
 
@@ -23,9 +24,8 @@ namespace SocketChat.Controllers
         [HttpGet]
         public async Task<List<User>> Get()
         {
-            return await  _userLogic.GetAllAsync();
+            return await _userLogic.GetAllAsync();
         }
-
 
         // POST api/<UserController>
         [HttpPost]

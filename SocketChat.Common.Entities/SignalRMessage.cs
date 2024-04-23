@@ -8,20 +8,51 @@ using System.Threading.Tasks;
 
 namespace SocketChat.Common.Entities
 {
-    [Table("message")]
+    [Table("messages")]
     public partial class SignalRMessage
     {
         [Key, Column("id")]
         public int Id { get; set; }
-        [Column("text")]
-        public string? Message { get; set; }
+
+        [Column("message")]
+        public string MessageContent { get; set; } = string.Empty;
 
 
-        //[Column("user_id")]
+        [ForeignKey("user_id")]
+        public virtual User User { get; set; } = new User();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //[Table("message")]
+    //public partial class SignalRMessage
+    //{
+    //    [Key, Column("id")]
+    //    public int Id { get; set; }
+    //    [Column("text")]
+    //    public string? Message { get; set; }
+
+
+    //    //[Column("user_id")]
         
 
-        [ForeignKey("Id")]
-        public int UserId { get; set; }
-        //public virtual User? User { get; set; }
-    }
+    //    [ForeignKey("user_id")]
+    //    // public int UserId { get; set; }
+    //    public virtual User? User { get; set; }
+    //}
 }

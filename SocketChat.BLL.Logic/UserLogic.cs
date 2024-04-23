@@ -12,14 +12,18 @@ namespace SocketChat.BLL.Logic
     {
         private readonly IUserRepository _userRepository;
 
+
         public UserLogic(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
+
+
+
         public async Task AddAsync(User user)
         {
-            await _userRepository.AddUsersAsync(user);
+            await _userRepository.AddUserAsync(user);
         }
 
         public async Task<List<User>> GetAllAsync()

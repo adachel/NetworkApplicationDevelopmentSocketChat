@@ -3,24 +3,35 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SocketChat.Common.Entities
 {
-    [Table("user")]
-    public class User
+    [Table("users")]
+    public partial class User
     {
         [Key, Column("id")]
         public int Id { get; set; }
 
         [Column("name")]
-        public string? Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        [Column("password")]
-        public string? Password { get; set; }
-
-        [Column("email")]
-        public string? Email { get; set; } = null;
-
-
-        public virtual ICollection<SignalRMessage>? Messages { get; set; }
-
-        
+        public virtual ICollection<SignalRMessage> Messages { get; set; } = new List<SignalRMessage>();
     }
+
+
+    //[Table("user")]
+    //public class User
+    //{
+    //    [Key, Column("id")]
+    //    public int Id { get; set; }
+
+    //    [Column("name")]
+    //    public string? Name { get; set; }
+
+    //    [Column("password")]
+    //    public string? Password { get; set; }
+
+    //    [Column("email")]
+    //    public string? Email { get; set; } = null;
+
+
+    //    public virtual ICollection<SignalRMessage>? Messages { get; set; }
+    //}
 }

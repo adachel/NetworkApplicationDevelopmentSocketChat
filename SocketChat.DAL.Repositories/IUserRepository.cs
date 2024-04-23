@@ -10,6 +10,6 @@ namespace SocketChat.DAL.Repositories
     public interface IUserRepository
     {
         Task<List<User>> GetUsersAsync();
-        Task AddUsersAsync(User user);
+        Task AddUserAsync(User user);
     }
 }
