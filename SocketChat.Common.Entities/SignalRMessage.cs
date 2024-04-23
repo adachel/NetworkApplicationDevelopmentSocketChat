@@ -11,7 +11,8 @@ namespace SocketChat.Common.Entities
     [Table("messages")]
     public partial class SignalRMessage
     {
-        [Key, Column("id")]
+        [Key]
+        [Column("id")]
         public int Id { get; set; }
 
         [Column("message")]

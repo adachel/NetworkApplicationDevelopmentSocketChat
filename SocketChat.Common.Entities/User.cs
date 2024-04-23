@@ -12,7 +12,7 @@ namespace SocketChat.Common.Entities
         [Column("name")]
         public string Name { get; set; } = string.Empty;
 
-        public virtual ICollection<SignalRMessage> Messages { get; set; } = new List<SignalRMessage>();
+        public virtual ICollection<SignalRMessage> Messages { get; set; }
     }
 
 
