@@ -17,6 +17,9 @@ namespace SocketChat.Common.Entities
         [Column("message")]
         public string MessageContent { get; set; } = string.Empty;
 
+        [Column("user_id")]
+        public int UserID { get; set; }
+
 
         [ForeignKey("user_id")]
         public virtual User User { get; set; } = new User();
