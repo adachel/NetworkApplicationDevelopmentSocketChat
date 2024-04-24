@@ -2,16 +2,17 @@
 using TChatClient;
 
 HubConnection connection;
+User user = new User();
 SignalRMessage signalRMessage = new SignalRMessage();
 
 Console.WriteLine("Задать имя пользователя");
-signalRMessage.FromUser.Name = Console.ReadLine();
+user.Name = Console.ReadLine();
 
 connection = new HubConnectionBuilder().WithUrl("https://localhost:7000/chat").Build();
 
 connection.On<SignalRMessage>("Receive", 
     signalRMessage => 
-    Console.WriteLine($"Пользователь: {signalRMessage.FromUser.Name}\n" + $"Сообщение: {signalRMessage.Message}"));
+    Console.WriteLine($"Пользователь: {user.Name}\n" + $"Сообщение: {signalRMessage.MessageContent}"));
 
 await connection.StartAsync();
 
@@ -19,9 +20,9 @@ bool isExit = true;
 while (isExit)
 {
     Console.WriteLine("Введите сообщение");
-    signalRMessage.Message = Console.ReadLine();
+    signalRMessage.MessageContent = Console.ReadLine();
 
-    if (signalRMessage.Message != "exit".ToLower())
+    if (signalRMessage.MessageContent != "exit".ToLower())
     {
         await connection.SendAsync("Send", signalRMessage);
     }

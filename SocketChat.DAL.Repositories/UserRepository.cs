@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SocketChat.Common.Entities;
 
 namespace SocketChat.DAL.Repositories
@@ -6,6 +7,7 @@ namespace SocketChat.DAL.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly ChatContext _chatContext;
+        public SignalRMessage _signalRMessage = new SignalRMessage();
 
         public UserRepository(ChatContext chatContext)
         {
@@ -14,7 +16,22 @@ namespace SocketChat.DAL.Repositories
 
         public async Task AddUserAsync(User user)
         {
-            await _chatContext.Users.AddAsync(user);
+            var tableData = _chatContext.Users.FirstOrDefault(y => y.Name == user.Name);
+
+            if (tableData != null)
+            {
+                var userTable = tableData;
+                var newMessage = user.Messages!.ToArray();
+                foreach (var item in newMessage)
+                {
+                    userTable.Messages!.Add(item);
+                }
+            }
+            else
+            {
+                await _chatContext.Users.AddAsync(user);
+            }
+
             await _chatContext.SaveChangesAsync();
         }
 

@@ -10,28 +10,15 @@ namespace SocketChat.Common.Entities
         public int Id { get; set; }
 
         [Column("name")]
-        public string Name { get; set; } = string.Empty;
+        public string? Name { get; set; }
 
-        public virtual ICollection<SignalRMessage> Messages { get; set; }
+        [Column("password")]
+        public string? Password { get; set; }
+
+        [Column("email")]
+        public string? Email { get; set; } 
+
+
+        public virtual ICollection<SignalRMessage>? Messages { get; set; }
     }
-
-
-    //[Table("user")]
-    //public class User
-    //{
-    //    [Key, Column("id")]
-    //    public int Id { get; set; }
-
-    //    [Column("name")]
-    //    public string? Name { get; set; }
-
-    //    [Column("password")]
-    //    public string? Password { get; set; }
-
-    //    [Column("email")]
-    //    public string? Email { get; set; } = null;
-
-
-    //    public virtual ICollection<SignalRMessage>? Messages { get; set; }
-    //}
 }

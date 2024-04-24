@@ -11,19 +11,18 @@ namespace SocketChat.Common.Entities
     [Table("messages")]
     public partial class SignalRMessage
     {
-        [Key]
-        [Column("id")]
+        [Key, Column("id")]
         public int Id { get; set; }
 
         [Column("message")]
-        public string MessageContent { get; set; } = string.Empty;
+        public string MessageContent { get; set; }
 
         [Column("user_id")]
         public int UserID { get; set; }
 
 
-        [ForeignKey("user_id")]
-        public virtual User User { get; set; } = new User();
+        //[ForeignKey("user_id")]
+        //public virtual User User { get; set; }
     }
 
 

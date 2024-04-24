@@ -18,8 +18,6 @@ namespace SocketChat.Controllers
         {
             _userLogic = userLogic; 
         }
-
-
         // GET: api/<UserController>
         [HttpGet]
         public async Task<List<User>> Get()
