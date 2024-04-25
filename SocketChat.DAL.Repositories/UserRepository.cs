@@ -20,11 +20,10 @@ namespace SocketChat.DAL.Repositories
 
             if (tableData != null)
             {
-                var userTable = tableData;
                 var newMessage = user.Messages!.ToArray();
                 foreach (var item in newMessage)
                 {
-                    userTable.Messages!.Add(item);
+                    tableData.Messages!.Add(item);
                 }
             }
             else
